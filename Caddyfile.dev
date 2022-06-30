@@ -1,5 +1,5 @@
 {
-	{$BASEROW_CADDY_GLOBAL_CONF}
+    debug
 }
 
 {$BASEROW_CADDY_ADDRESSES} {

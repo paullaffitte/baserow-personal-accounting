@@ -1,0 +1,3 @@
+[submodule "baserow"]
+	path = baserow
+	url = git@github.com:bram2w/baserow.git

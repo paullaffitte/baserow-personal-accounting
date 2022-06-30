@@ -1,36 +1,6 @@
 services:
-
-  # UNCOMMENT TO BUILD
-  # backend-builder:
-  #   image: baserow_backend_dev:latest
-  #   build:
-  #     dockerfile: ./backend/Dockerfile
-  #     context: .
-  #     target: dev
-  #     args:
-  #       # We allow configuring the UID/GID here so you can run as the dev's actual user
-  #       # reducing the chance the containers screw up the bind mounted folders.
-  #       UID: $UID
-  #       GID: $GID
-
   backend:
-    image: paullaffitte/baserow-backend:latest
-    build:
-      context: ..
-      dockerfile: ./Dockerfile
     environment:
       ADDITIONAL_APPS: baserow.contrib.personal_accounting
     volumes:
-      - ../src:/baserow/backend/src/baserow/contrib/personal_accounting
-
-  # web-frontend:
-  #   image: baserow/web-frontend:1.10.1
-
-  celery:
-    image: paullaffitte/baserow-backend:latest
-
-  celery-export-worker:
-    image: paullaffitte/baserow-backend:latest
-
-  celery-beat-worker:
-    image: paullaffitte/baserow-backend:latest
+      - ../src/backend:/baserow/backend/src/baserow/contrib/personal_accounting

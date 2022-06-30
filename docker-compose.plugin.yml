@@ -1,0 +1,20 @@
+services:
+  backend:
+    image: paullaffitte/baserow-backend:latest
+    build:
+      context: ..
+      dockerfile: ./Dockerfile
+    environment:
+      ADDITIONAL_APPS: baserow.contrib.personal_accounting
+
+  web-frontend:
+    image: baserow/web-frontend:1.10.1
+
+  celery:
+    image: paullaffitte/baserow-backend:latest
+
+  celery-export-worker:
+    image: paullaffitte/baserow-backend:latest
+
+  celery-beat-worker:
+    image: paullaffitte/baserow-backend:latest

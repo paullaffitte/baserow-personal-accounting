@@ -1,7 +1,3 @@
-FROM baserow_backend_dev:latest as dev
+FROM baserow/backend:1.10.1 as dev
 
-COPY ./src ./src/baserow/contrib/personal_accounting
-
-# Override env variables and initial cmd to start up in dev mode.
-ENV DJANGO_SETTINGS_MODULE='baserow.config.settings.dev'
-CMD ["django-dev"]
+COPY ./src/backend ./src/baserow/contrib/personal_accounting

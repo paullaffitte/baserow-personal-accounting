@@ -1,9 +1,8 @@
 from django.http import JsonResponse
-from datetime import datetime
 
-def monthly_reports(request):
+def monthly_reports(request, tableId: int):
   from baserow.contrib.database.table.models import Table
-  transactions_table = Table.objects.get(pk=253)
+  transactions_table = Table.objects.get(pk=tableId)
   transactions_model = transactions_table.get_model(attribute_names=True)
 
   month = {

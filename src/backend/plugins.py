@@ -11,5 +11,5 @@ class PersonalAccountingPlugin(Plugin):
 
   def get_api_urls(self):
     return [
-      path('personal-accounting/', include(api_urls, namespace=self.type)),
+      path('personal-accounting/<int:tableId>/', include(api_urls, namespace=self.type)),
     ]

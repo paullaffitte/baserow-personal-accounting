@@ -2,5 +2,12 @@ services:
   backend:
     environment:
       ADDITIONAL_APPS: baserow.contrib.personal_accounting
+      MIGRATE_PLUGIN: /baserow/venv/bin/python ./baserow makemigrations personal_accounting && /baserow/venv/bin/python ./baserow migrate
     volumes:
       - ../src/backend:/baserow/backend/src/baserow/contrib/personal_accounting
+
+  web-frontend:
+    environment:
+      ADDITIONAL_MODULES: '@/modules/personal_accounting/module.js'
+    volumes:
+      - ../src/frontend:/baserow/web-frontend/modules/personal_accounting

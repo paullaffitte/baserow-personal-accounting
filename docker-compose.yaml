@@ -40,7 +40,7 @@ services:
       - caddy_data:/data
 
   backend:
-    image: baserow/backend:1.10.1
+    image: baserow/backend:1.21.2
     restart: unless-stopped
     environment:
       <<: *backend-variables
@@ -51,7 +51,7 @@ services:
       - media:/baserow/media
 
   web-frontend:
-    image: baserow/web-frontend:1.10.1
+    image: baserow/web-frontend:1.21.2
     restart: unless-stopped
     environment:
       BASEROW_PUBLIC_URL: ${BASEROW_PUBLIC_URL-http://localhost}
@@ -60,7 +60,7 @@ services:
       - backend
 
   celery:
-    image: baserow/backend:1.10.1
+    image: baserow/backend:1.21.2
     restart: unless-stopped
     environment:
       <<: *backend-variables
@@ -75,7 +75,7 @@ services:
       - media:/baserow/media
 
   celery-export-worker:
-    image: baserow/backend:1.10.1
+    image: baserow/backend:1.21.2
     restart: unless-stopped
     command: celery-exportworker
     environment:
@@ -90,7 +90,7 @@ services:
       - media:/baserow/media
 
   celery-beat-worker:
-    image: baserow/backend:1.10.1
+    image: baserow/backend:1.21.2
     restart: unless-stopped
     command: celery-beat
     environment:
